@@ -1,0 +1,140 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<!-- project page
+<br>
+<img width="300px" src="{{ project.project_image.url }}" alt="image">
+<h3>{{project.title}}</h3>  -->
+<!--Section: Newsfeed-->
+<br>
+<section>
+    <div class="container">
+    <div class="card" >
+      <div class="card-body">
+        <div class="d-flex justify-content-center">
+            <h1 class="center" >{{project.title}}</h1>
+        </div>
+         
+        <!-- Data -->
+        <div class="d-flex mb-3">
+          <a href="{% url 'userProfile' project.owner.id %}">
+            <img src="{{ project.owner.profile_image.url }}"
+              class="border rounded-circle me-2" alt="" style="height: 40px" />
+          </a>
+          <div>
+            <a href="{% url 'userProfile' project.owner.id %}" class="text-dark mb-0">
+              <strong>{{project.owner.name}}</strong>
+            </a>
+            
+          </div>
+        </div>
+        <!-- Description -->
+        <div>
+          <p>
+            {{project.description}}
+          </p>
+        </div>
+      </div>
+      <!-- Media -->
+      <div class="bg-image hover-overlay ripple rounded-0" data-mdb-ripple-color="light">
+        <img src="{{ project.project_image.url }}" class="w-100" />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+        </a>
+      </div>
+      <!-- Media -->
+      <!-- Interactions -->
+      <div class="card-body">
+        <!-- Reactions -->
+        <div class="d-flex justify-content-between mb-3">
+          <div>
+            
+          </div>
+          <div>
+            <a href="" class="text-muted"> {{project.reviewers.count}} comments </a>
+          </div>
+        </div>
+        <!-- Reactions -->
+        <br>
+  
+        <!-- Buttons -->
+        <!-- <div class="d-flex justify-content-between text-center border-top border-bottom mb-4">
+          <button type="button" class="btn btn-link btn-lg" data-mdb-ripple-color="dark">
+            <i class="fas fa-thumbs-up me-2"></i>Like
+          </button>
+          <button type="button" class="btn btn-link btn-lg" data-mdb-ripple-color="dark">
+            <i class="fas fa-comment-alt me-2"></i>Comment
+          </button>
+          <button type="button" class="btn btn-link btn-lg" data-mdb-ripple-color="dark">
+            <i class="fas fa-share me-2"></i>Share
+          </button>
+        </div> -->
+        <!-- Buttons -->
+  
+        <!-- Comments -->
+
+        {% if request.user.profile.id in project.reviewers %}
+        <p>You have already submitted your comment for this project</p>
+
+        {% elif request.user.profile == project.owner %}
+        <p>You cannot comment on your own work</p>
+
+        {% elif request.user.is_authenticated %}
+  
+        <!-- Input -->
+        <div class="d-flex mb-3">
+          <a href="{% url 'userProfile' request.user.profile.id %}">
+            <img src="{{ request.user.profile.profile_image.url }}"
+              class="border rounded-circle me-2" alt="" style="height: 40px" />
+          </a>
+          <form class="form-outline w-100" method="POST">
+            {% csrf_token %}
+            
+            {{commentform.as_p}}
+            
+            <button type="submit" class="btn btn-outline-primary ms-1">Add comment</button>
+          </form>
+        </div>
+        <!-- Input -->
+        {% else %}
+            <a href="{% url 'loginUser' %}">Please login to leave a comment</a>
+        {% endif %}
+
+        <br>
+  
+        <!-- Answers -->
+        {% for comment in project.review_set.all %}
+        <!-- Single answer -->
+        <div class="d-flex mb-3">
+          <a href="{% url 'userProfile' comment.owner.id %}">
+            <img src="{{ comment.owner.profile_image.url }}"
+              class="border rounded-circle me-2" alt="" style="height: 40px" />
+          </a>
+          <div>
+            <div class="bg-light rounded-3 px-3 py-1">
+              <a href="{% url 'userProfile' comment.owner.id %}" class="text-dark mb-0">
+                <strong>{{comment.owner}}</strong>
+              </a>
+              <a href="" class="text-muted d-block">
+                <small>{{comment.value}}</small>
+              </a>
+              <a href="" class="text-muted d-block">
+                <small>{{comment.body}}</small>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+        {% endfor %}
+  
+        
+        <!-- Answers -->
+  
+        <!-- Comments -->
+      </div>
+      <!-- Interactions -->
+    </div>
+</div>
+  </section>
+  <!--Section: Newsfeed-->
+{% endblock %}

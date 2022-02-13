@@ -1,0 +1,233 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<section style="background-color: #eee;">
+    <div class="container py-5">
+      
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img src="{{profile.profile_image.url}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-3">{{profile.name}}</h5>
+              <p class="text-muted mb-1">{{profile.short_intro}}</p>
+              <p class="text-muted mb-4">{{profile.location}}</p>
+              
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-outline-secondary ms-1"><a class="link-secondary text-decoration-none" href="{% url 'editaccount'%}">Edit</a></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="card mb-4 mb-lg-0">
+            <div class="card-body p-0">
+              <ul class="list-group list-group-flush rounded-3">
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fas fa-globe fa-lg text-warning"></i>
+                  <p class="mb-0">https://mdbootstrap.com</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-github fa-lg" style="color: #333333;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
+                  <p class="mb-0">@mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
+                  <p class="mb-0">mdbootstrap</p>
+                </li>
+              </ul>
+            </div>
+          </div> -->
+
+
+        </div>
+        <div class="col-lg-8">
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.name}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">location</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.location}}</p>
+                </div>
+              </div>
+              
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">About Me</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{profile.bio}}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status</p>
+                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                  <div class="progress rounded mb-2" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-4 mb-md-0">
+                <div class="card-body">
+                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status</p>
+                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                  <div class="progress rounded" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                  <div class="progress rounded mb-2" style="height: 5px;">
+                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <h3>Skills</h3>
+
+          
+            <div class="card mb-4">
+              <div class="card-body">
+              {% for skill in skills %}          
+                
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">{{skill.name}}</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0">{{skill.description}}</p>
+                  </div>
+                </div>
+                <hr>
+                {% endfor %} 
+              </div>
+            </div>
+          
+
+          
+          <div class="d-flex justify-content mb-2">
+            <h3>Projects</h3>
+            <button type="button" class="btn btn-outline-secondary ms-1"><a class="link-secondary text-decoration-none" href="{% url 'create_project'%}">Add Project</a></button>
+          </div>
+
+          {% for project in projects %}
+          
+              
+                  <div class="card shadow-0 border rounded-3">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-md-8 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                          <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                            <a class="link-secondary text-decoration-none" href="{% url 'project' project.id %}"><img
+                              src="{{project.project_image.url}}"
+                              class="w-100"
+                            /></a>
+                            
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-xl-6">
+                          <h5><a class="link-dark text-decoration-none" href="{% url 'project' project.id %}">{{project.title}}</a></h5>
+                          <div class="d-flex flex-row">
+                            <div class="text-danger mb-1 me-2">
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                              <i class="fa fa-star"></i>
+                            </div>
+                            <span>{{project.short_intro}}</span>
+                          </div>
+                          <div class="mt-1 mb-0 text-muted small">
+                            {% for tag in project.tags.all %}
+                            <span class="badge bg-secondary">
+                                {{tag}}
+                            </span>
+                            {% endfor %}
+                            
+                          </div>
+                          
+                          <p class="text-truncate mb-4 mb-md-0">
+                            {{project.description}}
+                          </p>
+                          <div class="card-body">
+                            <a href="{% url 'update_project' project.id %}" class="card-link">Edit</a>
+                            <a href="{% url 'delete_project' project.id %}" class="card-link">Delete</a>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+
+<div class="container">
+  <form class="input-group" action="{% url 'projects' %}" method="get">
+    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" name="search_query" value="{{search_query}}" />
+    <button type="submit" class="btn btn-outline-primary">search</button>
+  </form> 
+  <br>
+     
+</div>
+
+
+  {% if projects %}
+
+
+  
+  <div class="container">
+
+    
+    <div class="row">
+
+      
+
+  {% for project in projects %}
+
+  <div class="col-sm" style="margin-bottom: 100px">
+  <div class="card" style="width: 18rem;">
+    <img src="{{ project.project_image.url }}" class="card-img-top" alt="project image">
+    <div class="card-body">
+      <h5 class="card-title"><a class="link-secondary text-decoration-none" href="{% url 'project' project.id %}">{{project.title}}</a></h5>
+      <p class="card-text">{{project.description}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <small>owner: {{project.owner.name}} </small>        
+      </li>
+      <li class="list-group-item">
+        {% for tag in project.tags.all %}
+        <span class="badge bg-secondary">
+            {{tag}}
+        </span>
+        {% endfor %}
+      </li>
+      
+    </ul>
+    
+    <!-- <ul class="list-group list-group-flush">
+      
+      
+    </ul> -->
+    
+  </div>
+</div>
+
+  {% endfor %}
+</div>
+</div>
+
+  {% endif %}
+
+
+{% endblock %}

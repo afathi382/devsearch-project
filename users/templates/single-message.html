@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+  
+  <br>
+
+  <h6>from: </h6>
+  <p>{{single_message.sender}}</p> 
+  
+  <h6>email: </h6>
+  <p>{{single_message.email}}</p>
+  
+  <h6>subject: </h6>
+  <p>{{single_message.subject}}</p>
+  
+  <h6>message: </h6>
+  <p>{{single_message.body}}</p>
+
+  <h6>time: </h6>
+  <p>{{single_message.created}}</p>
+    
+  <a href="{% url 'inbox' %}"> <button>Go back</button></a>
+</div>
+
+
+
+  {% endblock %}

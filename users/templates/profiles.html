@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<div class="container">
+  <form class="input-group" action="{% url 'profiles' %}" method="get">
+    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+    aria-describedby="search-addon" name="search_query" value="{{search_query}}" />
+    <button type="submit" class="btn btn-outline-primary">search</button>
+  </form> 
+  <br>
+     
+</div>
+
+{% if profiles %}
+  
+  <div class="container">
+    <div class="row">
+      
+
+  {% for profile in profiles %}
+
+  <div class="col-sm" style="margin-bottom: 100px">
+  <div class="card" style="width: 18rem;">
+    <img src="{{ profile.profile_image.url }}" class="card-img-top" alt="project image">
+    <div class="card-body">
+      <h5 class="card-title"><a class="link-secondary text-decoration-none" href="{% url 'userProfile' profile.id %}">{{profile.name}}</a></h5>
+      <p class="card-text">{{profile.short_intro}}</p>
+    </div>
+    
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <span class="badge bg-secondary">
+            django
+        </span>
+      </li>
+      
+    </ul>
+   
+  </div>
+</div>
+
+  {% endfor %}
+</div>
+</div>
+
+  {% endif %}
+
+{% endblock %}

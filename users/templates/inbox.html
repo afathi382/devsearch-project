@@ -1,0 +1,61 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+
+<div class="container">
+
+    <br>
+    <h3>new messages (<span>{{unread_count }}</span>) </h3>
+    {% for message in inbox_messages %}
+    {% if message.is_read == False %}
+    <div class="card mb-4">
+        <div class="card-body">     
+          
+        <a class="link-dark text-decoration-none" href="{% url 'single-message' message.id %}">
+          <div class="row">
+            <div class="col-sm-2">
+              <p class="mb-0 fw-bold">{{message.sender}}</p>
+            </div>
+            <div class="col-sm-4">
+                <p class="mb-0 fw-bold">{{message.email}}</p>
+            </div>
+            <div class="col-sm-6">
+                <p class="mb-0 fw-bold">{{message.subject}}</p>
+              </div>
+          </div>
+        </a>
+                    
+        </div>
+      </div>
+      {% else %}
+
+      <a class="link-dark text-decoration-none" href="{% url 'single-message' message.id %}">
+      <div class="card mb-4">
+        <div class="card-body">     
+          
+          <div class="row">
+            <div class="col-sm-2">
+                <p class="text-muted mb-0 fw-normal">{{message.sender}}</p>
+            </div>
+            <div class="col-sm-4">
+              <p class="text-muted mb-0 fw-normal">{{message.email}}</p>
+            </div>
+            <div class="col-sm-6">
+                <p class="text-muted mb-0 fw-normal">{{message.subject}}</p>
+              </div>
+          </div>
+                    
+        </div>
+      </div>
+    </a>
+
+      {% endif %}
+      {% endfor %}
+
+</div>
+
+
+
+  {% endblock %}

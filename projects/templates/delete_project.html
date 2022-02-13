@@ -1,0 +1,9 @@
+<h3>delete project page</h3>
+
+<p>Are you sure you want to delete '{{project}}' project</p>
+
+<a href="{% url 'projects' %}"> <button>Go back</button></a>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="confirm">
+</form>
